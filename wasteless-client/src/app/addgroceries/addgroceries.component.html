@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+
+<div class="header">
+  <div class="splash">
+    <h1 class="splash-head">User: {{username}}</h1>
+    <p>Fill to add grocery item</p>
+  </div>
+
+  <form class="pure-form pure-form-aligned">
+    <fieldset>
+      <div class="pure-control-group">
+        <label for="name">Name</label>
+        <input [(ngModel)]="groceriesModel.name" name="name" id="name" type="text" placeholder="Name">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="quantity">Quantity</label>
+        <input [(ngModel)]="groceriesModel.quantity" name="quantity" id="quantity" type="number" placeholder="Quantity">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="calories">Calories</label>
+        <input [(ngModel)]="groceriesModel.calories" name="calories" id="calories" type="number" placeholder="Calories">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="purchaseDate">Purchase Date</label>
+        <input [(ngModel)]="groceriesModel.purchaseDate" name="purchaseDate" id="purchaseDate" type="Date"
+               placeholder="Purchase Date">
+      </div>
+
+      <div class="pure-control-group">
+        <label for="expirationDate">Expiration Date</label>
+        <input [(ngModel)]="groceriesModel.expirationDate" name="expirationDate" id="expirationDate" type="Date"
+               placeholder="Expiration Date">
+      </div>
+
+
+      <div style="margin-top: 20px;">
+        <button type="Add" class="btn-solid-reg" (click)="add()">Add</button>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <button type="View groceries list" class="btn-solid-reg" (click)="view()">View groceries list</button>
+      </div>
+
+    </fieldset>
+  </form>
+</div>

@@ -1,0 +1,129 @@
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+
+<div class=indent>
+  <div class="header" style="margin-bottom: 190px">
+    <div class="splash">
+      <div style="float: left; margin-left: 10%; margin-right: 10%;">
+        <h1 class="splash-head">User: {{username}}</h1>
+        <p>Groceries List</p>
+        <div *ngIf="sum>loginModel.goal">
+          <p>Wasting food</p>
+          <a href="https://www.trusselltrust.org/get-involved/ways-to-give/donate-food/">Donate</a>
+        </div>
+      </div>
+
+      <div style="float: left; margin-left: 20px;: ">
+        <div>
+          <h3 class="splash-head">Goal: {{loginModel.goal}}</h3>
+          <h3 class="splash-head">Burndown rate: {{sum}}</h3>
+        </div>
+
+        <div class="pure-control-group" style="margin-top: 10px">
+          <label for="goal" style="margin-bottom: 30px; margin-right: 10px;">New goal</label>
+          <input [(ngModel)]="goal" name="goal" id="goal" type="Number" placeholder="Goal">
+        </div>
+
+        <div style="margin-top: 20px; margin-bottom: 60px">
+          <button type="Set goal" class="btn-solid-reg" (click)="setGoal()">Set goal</button>
+        </div>
+      </div>
+
+      <div style="float: left;">
+        <div style="margin-left: 200px">
+          <button type="Log out" class="btn-solid-reg" (click)="logout()">Log out</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class=indent>
+
+    <div style="float: left">
+
+      <div class="pure-control-group" style="margin-left: 75px">
+        <label for="field1">Grocery item</label>
+        <select id="field1" style="margin-left: 65px; width: 160px">
+          <option *ngFor="let g of groceries">
+            {{g.name}}
+          </option>
+        </select>
+      </div>
+
+      <div class="pure-control-group" style="margin-left: 75px; margin-top: 10px;">
+        <label for="consumptionDate" style="margin-right: 30px;">Consumption Date</label>
+        <input [(ngModel)]="consumptionModel.consumptionDate" name="consumptionDate" id="consumptionDate" type="Date"
+                                                              placeholder="Consumption Date">
+      </div>
+
+      <div style="margin-left: 75px; margin-top: 15px">
+        <button type="Add consumption date" class="btn-solid-reg" (click)="addConsumptionDate()">Add consumption date
+        </button>
+      </div>
+
+    </div>
+
+
+    <div style="float: left; margin-top: 15px; margin-left: 50px;">
+      <div class=indentud style="margin-left: 75px">
+        <button type="Add grocery item" class="btn-solid-reg" (click)="addGroceryItem()">Add grocery item</button>
+      </div>
+    </div>
+
+    <div style="float: left; margin-left: 180px;">
+      <div style="margin-bottom: 30px">
+        <button type="View weekly reports" class="btn-solid-reg" (click)="viewWeeklyReports()">View weekly reports
+        </button>
+      </div>
+
+      <div>
+        <button type="View monthly reports" class="btn-solid-reg" (click)="viewMonthlyReports()">View monthly reports
+        </button>
+      </div>
+    </div>
+
+
+    <div class="splash" class=indent>
+      <table class="pure-table" style="width: 70%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Calories</th>
+            <th>Purchase Date</th>
+            <th>Expiration Date</th>
+            <th>Consumption Date</th>
+            <th>Burndown Rates</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let g of groceries">
+            <td>{{ g.name }}</td>
+            <td>{{ g.quantity }}</td>
+            <td>{{g.calories}}</td>
+            <td>{{g.purchaseDate.toString().substr(0, 10)}}</td>
+            <td>{{g.expirationDate.toString().substr(0, 10)}}</td>
+            <td *ngIf="g.consumptionDate!==null">{{g.consumptionDate.toString().substr(0, 10)}}</td>
+            <td *ngIf="g.consumptionDate===null">N/A</td>
+            <td>{{g.rate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class=indent>
+      <h2>
+        <pre class=border *ngIf="stringObj!==null">
+          {{stringObj.msg}}
+        </pre>
+      </h2>
+    </div>
+  </div>
+
+</div>

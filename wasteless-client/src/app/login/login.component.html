@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+
+<div class=header>
+
+  <div class="splash">
+    <h1 class="splash-head">Wasteless application</h1>
+    <p>Log in or register</p>
+  </div>
+
+  <div class="pure-control-group">
+    <label for="user name" style="margin-top: 20px; margin-right: 20px;">Username</label>
+    <input [(ngModel)]="loginModel.username" style="margin-top: 20px;" name="username" id="user name" type="text"
+           placeholder="Username">
+    <span class="pure-form-message-inline">This is a required field.</span>
+  </div>
+
+  <div>
+    <label for="password" style="margin-top: 20px; margin-right: 20px;">Password</label>
+    <input [(ngModel)]="loginModel.password" style="margin-top: 20px;" name="password" id="password" type="password"
+           placeholder="Password">
+    <span class="pure-form-message-inline">This is a required field.</span>
+  </div>
+
+  <div>
+    <button style="margin-top: 20px; margin-right: 20px;" type="Log in" class="btn-solid-reg" (click)="login()">Login
+    </button>
+    <button style="margin-top: 20px;" type="Register" class="btn-solid-reg" (click)="register()">Register</button>
+  </div>
+
+
+</div>
