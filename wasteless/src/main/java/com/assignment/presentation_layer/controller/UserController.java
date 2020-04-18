@@ -1,8 +1,7 @@
 package com.assignment.presentation_layer.controller;
 
-import com.assignment.dto.*;
+import com.assignment.presentation_layer.dto.*;
 import com.assignment.business_layer.services.UserService;
-import com.assignment.utilities.report.ReportType;
 import com.assignment.utilities.validators.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

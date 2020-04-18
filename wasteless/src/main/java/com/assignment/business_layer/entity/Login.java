@@ -1,9 +1,8 @@
-package com.assignment.entity;
+package com.assignment.business_layer.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.List;
 
 @Entity

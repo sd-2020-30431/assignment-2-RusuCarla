@@ -1,8 +1,8 @@
-package com.assignment.utilities.factory;
+package com.assignment.business_layer.factory;
 
-import com.assignment.utilities.report.Report;
-import com.assignment.utilities.report.ReportType;
-import com.assignment.utilities.report.WeeklyReport;
+import com.assignment.business_layer.report.Report;
+import com.assignment.business_layer.report.ReportType;
+import com.assignment.business_layer.report.WeeklyReport;
 
 public class WeeklyFactory extends AbstractFactory {
     @Override

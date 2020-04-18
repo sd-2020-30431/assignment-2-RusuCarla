@@ -1,4 +1,4 @@
-package com.assignment.dto;
+package com.assignment.presentation_layer.dto;
 
 public class StringObj {
     String msg;

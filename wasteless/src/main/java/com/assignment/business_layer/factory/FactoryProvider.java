@@ -1,6 +1,6 @@
-package com.assignment.utilities.factory;
+package com.assignment.business_layer.factory;
 
-import com.assignment.utilities.report.ReportType;
+import com.assignment.business_layer.report.ReportType;
 
 public class FactoryProvider {
     public static AbstractFactory getFactory(ReportType reportType){

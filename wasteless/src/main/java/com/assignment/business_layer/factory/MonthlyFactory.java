@@ -1,8 +1,8 @@
-package com.assignment.utilities.factory;
+package com.assignment.business_layer.factory;
 
-import com.assignment.utilities.report.MonthlyReport;
-import com.assignment.utilities.report.Report;
-import com.assignment.utilities.report.ReportType;
+import com.assignment.business_layer.report.MonthlyReport;
+import com.assignment.business_layer.report.Report;
+import com.assignment.business_layer.report.ReportType;
 
 public class MonthlyFactory extends AbstractFactory {
     @Override

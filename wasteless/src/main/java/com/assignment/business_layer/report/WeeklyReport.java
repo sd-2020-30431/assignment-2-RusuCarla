@@ -1,10 +1,9 @@
-package com.assignment.utilities.report;
+package com.assignment.business_layer.report;
 
-import com.assignment.entity.Groceries;
-import com.assignment.entity.Login;
+import com.assignment.business_layer.entity.Groceries;
+import com.assignment.business_layer.entity.Login;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 
 public class WeeklyReport implements Report {
     @Override

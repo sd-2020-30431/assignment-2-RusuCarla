@@ -1,8 +1,8 @@
 package com.assignment.utilities.validators;
 
-import com.assignment.dto.ConsumptionDto;
-import com.assignment.dto.GroceriesDto;
-import com.assignment.dto.LoginDto;
+import com.assignment.presentation_layer.dto.ConsumptionDto;
+import com.assignment.presentation_layer.dto.GroceriesDto;
+import com.assignment.presentation_layer.dto.LoginDto;
 
 import java.sql.Timestamp;
 

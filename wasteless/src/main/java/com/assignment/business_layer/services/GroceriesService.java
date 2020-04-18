@@ -1,10 +1,10 @@
 package com.assignment.business_layer.services;
 
-import com.assignment.dto.*;
+import com.assignment.presentation_layer.dto.*;
 import com.assignment.persistence_layer.repository.LoginRepository;
 import com.assignment.persistence_layer.repository.*;
-import com.assignment.entity.Groceries;
-import com.assignment.entity.Login;
+import com.assignment.business_layer.entity.Groceries;
+import com.assignment.business_layer.entity.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
