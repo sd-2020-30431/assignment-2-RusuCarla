@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GroceriesModel} from '../addgroceries/addgroceries.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {ConsumptionModel} from './consumption.model';
 import {LoginModel} from '../login/login.model';
 import {StringObjModel} from './stringObj.model';
+import {ConcreteObserver} from './ConcreteObserver';
+import {ConcreteSubject} from './ConcreteSubject';
+
 
 @Component({
   selector: 'app-menu',
@@ -18,29 +21,21 @@ export class MenuComponent implements OnInit {
   username: string;
   goal: number;
   loginModel: LoginModel = new LoginModel();
-  rates: number[];
   sum: number;
   stringObj: StringObjModel = new StringObjModel();
+  observer: ConcreteObserver = new ConcreteObserver();
+  subject: ConcreteSubject = new ConcreteSubject();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getGroceries();
     this.getGoal();
-
+    this.subject.attach(this.observer);
   }
 
-  computeSum(){
-    this.sum = 0;
-    for (const g of this.groceries){
-      if (g.consumptionDate === null){
-        this.sum += g.rate;
-      }
-    }
-    console.log(this.sum);
-  }
-
-  getGroceries(){
+  getGroceries() {
     this.username = window.localStorage.getItem('username');
     const httpOptions = {
       headers: new HttpHeaders({
@@ -54,10 +49,12 @@ export class MenuComponent implements OnInit {
         console.table(this.groceries);
       },
       error => console.log(error));
-    setTimeout(() => {  this.computeSum(); }, 2000);
+    setTimeout(() => {
+      this.subject.computeSum(this.groceries, this.loginModel);
+    }, 2000);
   }
 
-  viewWeeklyReports(){
+  viewWeeklyReports() {
     const httpOptions = {
       headers: new HttpHeaders({
         userId: window.localStorage.getItem('userId')
@@ -74,7 +71,8 @@ export class MenuComponent implements OnInit {
         console.log(error);
       });
   }
-  viewMonthlyReports(){
+
+  viewMonthlyReports() {
     const httpOptions = {
       headers: new HttpHeaders({
         userId: window.localStorage.getItem('userId')
@@ -92,7 +90,7 @@ export class MenuComponent implements OnInit {
       });
   }
 
-  addConsumptionDate(){
+  addConsumptionDate() {
     const httpOptions = {
       headers: new HttpHeaders({
         userId: window.localStorage.getItem('userId')
@@ -112,19 +110,20 @@ export class MenuComponent implements OnInit {
         console.log(error);
         alert('ERROR: Wrong input.');
       });
-    setTimeout(() => {  this.getGroceries(); }, 2000);
-    setTimeout(() => {  this.computeSum(); }, 2000);
+    setTimeout(() => {
+      this.getGroceries();
+    }, 2000);
   }
 
-  addGroceryItem(){
+  addGroceryItem() {
     this.router.navigateByUrl('/addgroceries');
   }
 
-  logout(){
+  logout() {
     this.router.navigateByUrl('/login');
   }
 
-  getGoal(){
+  getGoal() {
     const httpOptions = {
       headers: new HttpHeaders({
         userId: window.localStorage.getItem('userId')
@@ -139,9 +138,12 @@ export class MenuComponent implements OnInit {
       error => {
         console.log(error);
       });
+    setTimeout(() => {
+      this.subject.computeSum(this.groceries, this.loginModel);
+    }, 2000);
   }
 
-  setGoal(){
+  setGoal() {
     const httpOptions = {
       headers: new HttpHeaders({
         userId: window.localStorage.getItem('userId')
@@ -157,7 +159,9 @@ export class MenuComponent implements OnInit {
         console.log(error);
         alert('ERROR: Wrong input.');
       });
-    setTimeout(() => {  this.getGoal(); }, 2000);
+    setTimeout(() => {
+      this.getGoal();
+    }, 2000);
 
     console.log(this.loginModel.goal);
   }

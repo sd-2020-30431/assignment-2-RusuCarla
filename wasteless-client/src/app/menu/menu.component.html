@@ -7,16 +7,20 @@
       <div style="float: left; margin-left: 10%; margin-right: 10%;">
         <h1 class="splash-head">User: {{username}}</h1>
         <p>Groceries List</p>
-        <div *ngIf="sum>loginModel.goal">
+        <div *ngIf="observer.excess>0">
           <p>Wasting food</p>
-          <a href="https://www.trusselltrust.org/get-involved/ways-to-give/donate-food/">Donate</a>
+          <a href="https://www.trusselltrust.org/get-involved/ways-to-give/donate-food/">Donate to TrusselTrust</a>
+          <br>
+          <a href="https://www.shfb.org/give-help/donate-food/">Donate to SecondHarvest</a>
+          <br>
+          <a href="https://www.foodbank6.ro/implica-te/doneaza-mancare">Donate to Banca Locala de Alimente</a>
         </div>
       </div>
 
       <div style="float: left; margin-left: 20px;: ">
         <div>
           <h3 class="splash-head">Goal: {{loginModel.goal}}</h3>
-          <h3 class="splash-head">Burndown rate: {{sum}}</h3>
+          <h3 class="splash-head">Burndown rate: {{subject.sum}}</h3>
         </div>
 
         <div class="pure-control-group" style="margin-top: 10px">
